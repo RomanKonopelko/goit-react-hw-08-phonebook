@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 import contactsAppReducer from './contacts/contacts-reducer';
+import authReducer from './Auth/auth-reducer';
 
 // const persistConfig = {
 //   key: 'contacts',
@@ -21,6 +22,7 @@ import contactsAppReducer from './contacts/contacts-reducer';
 const store = configureStore({
   reducer: {
     contactsApp: contactsAppReducer,
+    auth: authReducer,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {

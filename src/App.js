@@ -1,32 +1,23 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import Form from './Components/Form';
-import Filter from './Components/Filter';
-import operations from './redux/contacts/contacts-operations';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Container from './Components/Container';
-import s from './form.module.css';
+import AppBar from './Components/AppBar';
+import HomeView from './Views/HomeView';
+import RegisterView from './Views/RegisterView';
+import LoginView from './Views/LoginView';
+import ContactsView from './Views/ContactsView';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchContacts();
-  }
+const App = () => (
+  <Container>
+    <AppBar />
 
-  render() {
-    return (
-      <Container className={s.form__container} title="Phonebook">
-        <Form onSubmit={this.props.onSubmit} />
-        <Container className={s.list__container} title="Contacts">
-          <Filter />
-        </Container>
-      </Container>
-    );
-  }
-}
+    <Switch>
+      <Route exact path="/" component={HomeView} />
+      <Route path="/register" component={RegisterView} />
+      <Route path="/login" component={LoginView} />
+      <Route path="/contacts" component={ContactsView} />
+    </Switch>
+  </Container>
+);
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmit: data => dispatch(operations.addContact(data)),
-    fetchContacts: () => dispatch(operations.fetchContacts()),
-  };
-};
-export default connect(null, mapDispatchToProps)(App);
+export default App;
