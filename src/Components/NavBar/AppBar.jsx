@@ -1,8 +1,8 @@
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import Navigation from './Navigation';
 import UserMenu from './UserMenu';
 import AuthNav from './AuthNav';
-import authSelectors from '../redux/Auth/auth-selectors'
+import authSelectors from '../../redux/auth/auth-selectors'
 
 const { getIsAuthenticated } = authSelectors
 
@@ -16,7 +16,6 @@ const styles = {
 };
 
 const AppBar = ({ IsAuthenticated }) => {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <header style={styles.header}>
       <Navigation />

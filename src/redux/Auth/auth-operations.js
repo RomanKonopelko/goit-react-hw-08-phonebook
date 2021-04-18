@@ -14,7 +14,7 @@ import {
   getCurrentUserSuccess,
 } from './auth-actions';
 
-axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -22,6 +22,7 @@ const token = {
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
+    console.log(axios.defaults.headers);
   },
 };
 
@@ -45,13 +46,47 @@ const login = credentials => async dispatch => {
     const { data } = await axios.post('/users/login', credentials);
 
     token.set(data.token);
-    dispatch(registerSuccess(data));
+    dispatch(loginSuccess(data));
   } catch (error) {
-    dispatch(registerError(error.message));
+    dispatch(loginError(error.message));
+  }
+};
+
+const logout = () => async dispatch => {
+  dispatch(logoutRequest());
+
+  try {
+    await axios.post('/users/logout');
+
+    token.unset();
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error.message));
+  }
+};
+
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) return;
+
+  token.set(persistedToken);
+  dispatch(getCurrentUserRequest());
+  try {
+    const { data } = await axios.get('/users/current');
+
+    dispatch(getCurrentUserSuccess(data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error.message));
   }
 };
 
 export default {
   token,
   register,
+  login,
+  logout,
+  getCurrentUser,
 };

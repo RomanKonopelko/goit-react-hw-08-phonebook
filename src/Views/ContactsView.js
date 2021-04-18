@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import Form from '../Components/Form';
-import Filter from '../Components/Filter';
+import Form from '../Components/Contacts/Form';
+import Filter from '../Components/Contacts/Filter';
 import operations from '../redux/contacts/contacts-operations';
-import Container from '../Components/Container';
+import Container from '../Components/Contacts/Container';
 import s from '../form.module.css';
 
 class ContactsView extends Component {

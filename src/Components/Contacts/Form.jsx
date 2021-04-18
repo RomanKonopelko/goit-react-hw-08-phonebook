@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { v4 as randomID } from 'uuid';
-import s from '../form.module.css'
+import s from '../../form.module.css'
 
 export default class Form extends Component {
     state = {

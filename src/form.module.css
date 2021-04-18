@@ -1,3 +1,7 @@
+body {
+  font-family: Roboto;
+}
+
 .form__container {
   display: flex;
   justify-content: center;
@@ -5,14 +9,10 @@
   flex-direction: column;
 
   margin: 0 auto;
-  max-width: 800px;
-
-  background-color: rgb(250, 208, 182);
-  box-shadow: 2px 4px 6px 6px grey;
 }
 
-.list__container{
-    display: flex;
+.list__container {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -38,7 +38,9 @@
 }
 
 .button {
-  background-color: rgba(255, 127, 7, 0.692);
-  padding: 5px;
+  background-color: rgba(64, 11, 253, 0.692);
+  color: white;
+  font-weight: 700;
+  padding: 10px 15px;
   border-radius: 4px;
 }

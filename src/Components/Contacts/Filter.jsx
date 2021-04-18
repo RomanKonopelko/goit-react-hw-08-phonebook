@@ -1,10 +1,10 @@
-import s from '../form.module.css'
+import s from '../../form.module.css'
 import Contact from './Contact'
 import { v4 as randomID } from 'uuid';
 import { connect } from 'react-redux';
-import * as actions from '../redux/contacts/contacts-actions'
-import * as selectors from '../redux/contacts/contacts-selectors'
-import operations from '../redux/contacts/contacts-operations'
+import * as actions from '../../redux/contacts/contacts-actions'
+import * as selectors from '../../redux/contacts/contacts-selectors'
+import operations from '../../redux/contacts/contacts-operations'
 
 const Filter = ({ getFilter, onDeleteContact, filteredContacts, isLoading }) =>
 (<>

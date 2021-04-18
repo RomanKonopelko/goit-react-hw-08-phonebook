@@ -4,8 +4,8 @@ export const fetchContactRequest = createAction('contacts/fetchContactRequest');
 export const fetchContactSuccess = createAction('contacts/fetchContactSuccess');
 export const fetchContactError = createAction('contacts/fetchContactError');
 
-export const addContactRequest = createAction('contacts/addTodoRequest');
-export const addContactSuccess = createAction('contacts/addTodoSuccess');
+export const addContactRequest = createAction('contacts/addContactRequest');
+export const addContactSuccess = createAction('contacts/addContactSuccess');
 export const addContactError = createAction('contacts/addContactError');
 
 export const deleteContactRequest = createAction('contacts/deleteTodoRequest');

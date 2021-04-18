@@ -1,9 +1,11 @@
+import { blue } from '@material-ui/core/colors';
 import React from 'react';
 
 const styles = {
   container: {
     minHeight: 'calc(100vh - 50px)',
     display: 'flex',
+
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -17,9 +19,9 @@ const styles = {
 const HomeView = () => (
   <div style={styles.container}>
     <h1 style={styles.title}>
-      Приветственная страница нашего сервиса{' '}
+      Приветственная страница RK PHONEBOOK{' '}
       <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
+        ✍🏼
       </span>
     </h1>
   </div>
