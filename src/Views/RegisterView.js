@@ -91,7 +91,7 @@ function RegisterView({ onRegister }) {
             <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth

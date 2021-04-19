@@ -1,4 +1,5 @@
 import React, { Component, Suspense, lazy } from 'react';
+import { Redirect } from 'react-router';
 import { Switch, Route } from 'react-router-dom';
 import Container from './Components/Contacts/Container';
 import AppBar from './Components/NavBar/AppBar';
@@ -22,6 +23,7 @@ class App extends Component {
         <AppBar />
         <Suspense fallback={<Loader />}>
           <Switch>
+            <Redirect path="/goit-react-hw-08-phonebook" to="/" />
             <Route exact path="/" component={HomeView} />
             <PublicRoute
               path="/register"
