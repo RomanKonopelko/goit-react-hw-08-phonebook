@@ -92,6 +92,7 @@ function RegisterView({ onRegister }) {
               <TextField
                 autoComplete="fname"
                 name="name"
+                value={name}
                 variant="outlined"
                 required
                 fullWidth
@@ -106,6 +107,7 @@ function RegisterView({ onRegister }) {
                 variant="outlined"
                 required
                 fullWidth
+                value={email}
                 id="email"
                 label="Email Address"
                 name="email"
@@ -118,6 +120,7 @@ function RegisterView({ onRegister }) {
                 variant="outlined"
                 required
                 fullWidth
+                value={password}
                 name="password"
                 label="Password"
                 type="password"
