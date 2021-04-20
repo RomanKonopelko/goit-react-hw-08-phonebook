@@ -15,6 +15,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import authSelectors from '../redux/auth/auth-selectors';
+import { Error } from '../Components/Contacts/Error';
 
 function Copyright() {
   return (
@@ -49,10 +51,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function RegisterView({ onRegister }) {
+function RegisterView({ onRegister, isAuthenticated }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isError, setError] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -70,9 +73,14 @@ function RegisterView({ onRegister }) {
   const handleSubmit = e => {
     e.preventDefault();
     onRegister({ name, email, password });
-    setName('');
-    setEmail('');
-    setPassword('');
+    if (isAuthenticated) {
+      setName('');
+      setEmail('');
+      setPassword('');
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
   const classes = useStyles();
 
@@ -128,6 +136,7 @@ function RegisterView({ onRegister }) {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
+              {isError && <Error />}
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -165,4 +174,8 @@ const mapDispatchToProps = {
   onRegister: authOperations.register,
 };
 
-export default connect(null, mapDispatchToProps)(RegisterView);
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterView);
